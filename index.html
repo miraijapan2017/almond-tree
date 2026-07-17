@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172217">
+  <meta name="description" content="Almond Tree restaurant in Hatanodai, Tokyo. Find us on social media and Google Maps.">
+  <title>Almond Tree | Hatanodai</title>
+
+  <style>
+    :root {
+      --bg: #f4efe5;
+      --panel: rgba(255,255,255,.82);
+      --ink: #182018;
+      --muted: #687067;
+      --accent: #9a6b32;
+      --accent-dark: #6d471e;
+      --green: #203724;
+      --line: rgba(24,32,24,.10);
+      --shadow: 0 24px 70px rgba(38, 49, 35, .16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(154,107,50,.16), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(32,55,36,.13), transparent 34%),
+        linear-gradient(135deg, #f9f5ed 0%, var(--bg) 55%, #eee5d6 100%);
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .27;
+      background-image:
+        linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 70%);
+    }
+
+    .shell {
+      width: min(100%, 480px);
+      position: relative;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 32px;
+      padding: 28px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border: 1px solid rgba(154,107,50,.22);
+      border-radius: 50%;
+      right: -75px;
+      top: -75px;
+    }
+
+    .brand {
+      text-align: center;
+      padding: 8px 10px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mark {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 16px;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      color: #fff8ec;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      letter-spacing: -2px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.16), transparent),
+        var(--green);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 15px 30px rgba(32,55,36,.24);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 8vw, 3.1rem);
+      letter-spacing: -.04em;
+    }
+
+    .subtitle {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: .97rem;
+      line-height: 1.6;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .links {
+      display: grid;
+      gap: 13px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link {
+      text-decoration: none;
+      color: var(--ink);
+      min-height: 68px;
+      padding: 13px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      display: grid;
+      grid-template-columns: 44px 1fr 28px;
+      align-items: center;
+      gap: 13px;
+      box-shadow: 0 8px 20px rgba(40,45,38,.06);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(154,107,50,.32);
+      box-shadow: 0 15px 30px rgba(40,45,38,.10);
+      background: rgba(255,255,255,.92);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #f2eadc;
+      color: var(--green);
+    }
+
+    .icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .text strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+    }
+
+    .text small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .location {
+      margin-top: 19px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      color: rgba(24,32,24,.55);
+      font-size: .72rem;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 390px) {
+      .card {
+        padding: 22px 17px;
+        border-radius: 26px;
+      }
+      .link {
+        grid-template-columns: 42px 1fr 24px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <section class="card">
+      <header class="brand">
+        <span class="eyebrow">Restaurant · Hatanodai</span>
+        <div class="mark" aria-label="Almond Tree monogram">AT</div>
+        <h1>Almond Tree</h1>
+        <p class="subtitle">Connect with us, explore our latest posts, and find your way to our restaurant in Tokyo.</p>
+      </header>
+
+      <nav class="links" aria-label="Almond Tree links">
+        <a class="link" href="https://www.google.com/maps?q=%E3%80%92142-0064+Tokyo,+Shinagawa+City,+Hatanodai,+5+Chome%E2%88%9213%E2%88%9212+2F&amp;ftid=0x60188bc02c5e5db3:0xa566411564d87785&amp;entry=gps&amp;shh=CAE&amp;lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813469,94286869&amp;g_ep=CAISEjI2LjI3LjIuOTM5NTc4NzgwMBgAIIgnKkksOTQyOTc2OTksOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsMTAwODEzNDY5LDk0Mjg2ODY5QgJKUA%3D%3D&amp;skid=bf4744da-793f-48b7-9ea9-4d97d2660176&amp;g_st=iv" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+          </span>
+          <span class="text"><strong>Find Us on Google Maps</strong><small>Hatanodai, Shinagawa, Tokyo</small></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="link" href="https://www.instagram.com/almondtreehatanodai?utm_source=qr" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.8A4.2 4.2 0 1 1 12 16.2 4.2 4.2 0 0 1 12 7.8Zm0 2A2.2 2.2 0 1 0 12 14.2 2.2 2.2 0 0 0 12 9.8Zm5.2-3.2a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+          </span>
+          <span class="text"><strong>Instagram</strong><small>@almondtreehatanodai</small></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="link" href="https://www.tiktok.com/@almond.tree4?_r=1&amp;_t=ZS-97wLQVxoxOO" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14.5 3c.4 2.2 1.7 3.6 4 4v3.2a8.2 8.2 0 0 1-4-1.2v6.3A6.2 6.2 0 1 1 9.1 9.2v3.4a2.9 2.9 0 1 0 2.1 2.8V3h3.3Z"/></svg>
+          </span>
+          <span class="text"><strong>TikTok</strong><small>@almond.tree4</small></span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="link" href="https://www.facebook.com/profile.php?id=61552318919833&amp;mibextid=wwXIfr&amp;rdid=afp4bVY1WPfvpWMP&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BsZDoVA3s%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14 8h3V4.5c-.5-.1-1.7-.2-3.2-.2-3.2 0-5.4 2-5.4 5.6V13H5v4h3.4v7h4.2v-7H16l.6-4h-4v-2.7C12.6 9.1 13 8 14 8Z"/></svg>
+          </span>
+          <span class="text"><strong>Facebook</strong><small>Follow Almond Tree</small></span>
+          <span class="arrow">→</span>
+        </a>
+      </nav>
+
+      <div class="location">
+        〒142-0064<br>
+        Tokyo, Shinagawa City, Hatanodai 5-13-12, 2F
+      </div>
+    </section>
+
+    <div class="footer">© <span id="year"></span> Almond Tree</div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
